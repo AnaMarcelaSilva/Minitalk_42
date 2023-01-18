@@ -6,7 +6,7 @@
 /*   By: amarcela <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 11:52:22 by amarcela          #+#    #+#             */
-/*   Updated: 2023/01/18 11:52:30 by amarcela         ###   ########.fr       */
+/*   Updated: 2023/01/18 13:15:40 by amarcela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	init(void)
 	sa.sa_flags = SA_SIGINFO;
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
-	sigaction(15, &sa, NULL);
 }
 
 int	main(void)

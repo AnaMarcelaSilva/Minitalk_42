@@ -6,7 +6,7 @@
 /*   By: amarcela <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 11:30:46 by amarcela          #+#    #+#             */
-/*   Updated: 2023/01/18 11:44:44 by amarcela         ###   ########.fr       */
+/*   Updated: 2023/01/18 17:08:10 by amarcela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	handler(int signum, siginfo_t *info, void *context)
 {
 	(void)context;
 	if (signum == SIGUSR1)
-		ft_printf("bit sended!\n");
+		ft_printf("char sended!\n");
 	else
 		g_wait = 0;
 }
@@ -52,13 +52,15 @@ void	sendbit(pid_t pid, char c)
 	{
 		if (!g_wait)
 		{
+			g_wait	= 1;
 			if (c & 1)
 				kill (pid, SIGUSR1);
 			else
 				kill (pid, SIGUSR2);
 			c >>= 1;
 			i++;
-			usleep(2000);
+			usleep(5000);
+		//	g_wait	= 1;
 		}
 	}
 }
@@ -70,6 +72,7 @@ int	main(int ac, char *av[])
 	size_t	i;
 
 	i = 0;
+	g_wait = 0;
 	init();
 	if (ac != 3)
 	{
